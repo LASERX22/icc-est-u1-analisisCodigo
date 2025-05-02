@@ -29,3 +29,30 @@ class MetodosOrdenamiento:
             arreglo[minimo]=arreglo[i]
             bajo=arreglo[i]
         return arreglo
+    
+    def sort_Insercion(self,array):
+        arreglo=array.copy()
+        n=len(arreglo)
+        for i in range(1,n):
+            clave=arreglo[i]
+            j=i-1
+            while j>=0 and arreglo[j]>clave:
+                arreglo[j+1]=arreglo[j]
+                j-=1
+            arreglo[j+1]=clave
+        return arreglo
+    
+    def sort_Shell(self,array):
+        arreglo=array.copy()
+        n=len(arreglo)
+        intervalo=n//2
+        while intervalo>0:
+            for i in range(intervalo,n):
+                temp=arreglo[i]
+                j=i
+                while j>=intervalo and arreglo[j-intervalo]>temp:
+                    arreglo[j]=arreglo[j-intervalo]
+                    j-=intervalo
+                arreglo[j]=temp
+            intervalo//=2
+        return arreglo

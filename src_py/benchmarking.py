@@ -8,20 +8,26 @@ class Benchmarking:
         self.mO=mo.MetodosOrdenamiento
         print("Benchmarking instanciado")
 
-        arreglo=self.build_arreglo(50000)
-        # tarea=()->
-        tarea=lambda: self.mO.burbuja(self, arreglo)
-        #mili=self.contar_con_current_time_milles(tarea)
-        #print(mili)
-        nano=self.contar_con_nano_time(tarea)
-        print(nano)
+    def medir_tiempo(self,metodo, arreglo):
+        inicio=time.perf_counter()
+        metodo(arreglo)
+        fin=time.perf_counter()
+        return fin-inicio
 
-        tarea2=lambda:self.mO.sort_burbuja_mejorado_optimizado(self,arreglo)
-        nano2=self.contar_con_nano_time(tarea2)
-        print(nano2)
-        tarea3=lambda:self.mO.sort_Seleccion(self,arreglo)
-        nano3=self.contar_con_nano_time(tarea3)
-        print(nano3)
+        # arreglo=self.build_arreglo(50000)
+        # # tarea=()->
+        # tarea=lambda: self.mO.burbuja(self, arreglo)
+        # #mili=self.contar_con_current_time_milles(tarea)
+        # #print(mili)
+        # nano=self.contar_con_nano_time(tarea)
+        # print(nano)
+
+        # tarea2=lambda:self.mO.sort_burbuja_mejorado_optimizado(self,arreglo)
+        # nano2=self.contar_con_nano_time(tarea2)
+        # print(nano2)
+        # tarea3=lambda:self.mO.sort_Seleccion(self,arreglo)
+        # nano3=self.contar_con_nano_time(tarea3)
+        # print(nano3)
 
     def build_arreglo(self,tamano):
         arreglo=[]
